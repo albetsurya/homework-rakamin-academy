@@ -8,10 +8,11 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container mt-5">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs nav-fill">
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -27,39 +28,61 @@
             id="list-tab"
             data-toggle="tab"
             href="#registrants-list"
-            >Registrans List</a
+            >Registrants List</a
           >
         </li>
       </ul>
 
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="registration">
-          <div class="mt-3">
+        <div class="tab-pane fade show active w-50" id="registration">
+          <div class="mt-5">
             <h2>Registration Form</h2>
-            <form id="registration-form">
+            <form id="registration-form" class="needs-validation" novalidate>
               <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" required />
+                <label for="validationCustom01" class="font-weight-bold pt-4"
+                  >Your Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationCustom01"
+                  autofocus
+                  required
+                />
+                <div class="error"></div>
               </div>
               <div class="form-group">
-                <label for="age">Age:</label>
-                <input type="number" class="form-control" id="age" required />
-              </div>
-              <div class="form-group">
-                <label for="allowance">Allowance:</label>
+                <label for="validationCustom02" class="font-weight-bold mt-2"
+                  >Your Age</label
+                >
                 <input
                   type="number"
                   class="form-control"
-                  id="allowance"
+                  id="validationCustom02"
                   required
                 />
+                <div class="error"></div>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-group">
+                <label for="validationCustom03" class="font-weight-bold mt-2"
+                  >Your Allowance</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="validationCustom03"
+                  required
+                />
+                <div class="error"></div>
+              </div>
+              <button class="btn btn-primary w-100" type="submit">
+                Submit form
+              </button>
             </form>
           </div>
         </div>
         <div class="tab-pane fade" id="registrants-list">
-          <div class="mt-3">
+          <div class="mt-5">
             <h2>Registrants List</h2>
             <table class="table">
               <thead>
