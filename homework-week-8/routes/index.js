@@ -1,5 +1,6 @@
 const express = require("express");
-const filmModel = require("../models/film");
+const filmModel = require("../models/filmModel");
+const actorModel = require("../models/actorModel");
 
 const router = express.Router();
 
@@ -34,10 +35,20 @@ router.get("/categories", async (req, res) => {
   }
 });
 
-router.get("/film-category/:id", async (req, res) => {
+router.get("/film-category", async (req, res) => {
   try {
-    const filmsByCategory = await filmModel.getFilmsByCategory();
-    res.json(filmsByCategory);
+    const filmsByCategories = await filmModel.getFilmsWithCategories();
+    res.json(filmsByCategories);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.get("/actors", async (req, res) => {
+  try {
+    const actors = await actorModel.getAllActors();
+    res.json(actors);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

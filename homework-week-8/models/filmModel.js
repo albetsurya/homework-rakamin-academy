@@ -15,8 +15,20 @@ const getAllCategories = async () => {
   return result.rows;
 };
 
-const getFilmsByCategory = async () => {
-  const result = await db.query();
+const getFilmsWithCategories = async () => {
+  const result = await db.query(`
+   SELECT
+  film.film_id,
+  film.title,
+  category.category_id,
+  category.name
+FROM
+  film
+INNER JOIN
+  film_category ON film.film_id = film_category.film_id
+INNER JOIN
+  category ON film_category.category_id = category.category_id
+  `);
   return result.rows;
 };
 
@@ -24,5 +36,5 @@ module.exports = {
   getAllFilms,
   getFilmById,
   getAllCategories,
-  getFilmsByCategory,
+  getFilmsWithCategories,
 };
